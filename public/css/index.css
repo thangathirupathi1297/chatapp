@@ -1,0 +1,196 @@
+
+  .home-page{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+  }
+  .center-div
+  {
+      position: absolute;
+      top:30%
+  }
+  .home-create{
+    background-color: #738fdb;
+    border: none;
+    border-radius: 5%;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .home-join{
+    background-color: #fff;
+    color: #738fdb;
+    border: none;
+    border-radius: 5%;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+  .home-join:hover{
+    color: #fff;
+    background-color: #738fdb;
+  }
+  .inputs{
+      background: #fff;
+    width: 500px;
+    margin: 65px auto;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 2px 25px rgb(0 0 0 / 20%);
+  }
+  .center-div-input
+  {
+    position: absolute;
+    top:30%;
+    
+  }
+  .login-form {
+    background: #fff;
+    width: 500px;
+    margin: 65px auto;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 2px 25px rgb(0 0 0 / 20%);
+}
+.login-form h1 {
+    padding: 35px 35px 0 35px;
+    font-weight: 300;
+}
+  .login-form .content {
+    padding: 0px 35px 0px;
+    text-align: center;
+}
+.login-form .input-field {
+    padding: 12px 5px;
+}
+.login-form .input-field input {
+    font-size: 16px;
+    display: block;
+    font-family: 'Rubik', sans-serif;
+    width: 100%;
+    padding: 10px 1px;
+    border: 0;
+    border-bottom: 1px solid #747474;
+    outline: none;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+.action{
+    padding: 35px;
+}
+/* #Warning1{
+  display: none;
+} */
+
+#errordiv{
+  padding: 0px 35px;
+  color: rgb(245, 28, 28);
+}
+
+.mainRoom{
+    width: 800px;
+    margin: 65px auto;
+    min-height: 350px;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    border-radius: 4px;
+    box-shadow: 0 2px 25px rgb(0 0 0 / 20%);
+}
+.header{
+  width: 100%;
+  display: flex;
+}
+.header h1{
+ margin: 0px auto;
+  font-weight: 300;
+}
+.content-container{
+  display: flex;
+  min-height: 300px;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.usersContent{
+    width: 15%;
+    margin-left: 0px;
+    color: #fff;
+    background-color: #738fdb;
+    transition: 0.5s;
+    z-index: 999
+}
+ul {
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+  padding: 0px 5px
+}
+ul li{
+  list-style: none;
+  padding: 5px 0px;
+}
+.messagebox{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 100%;
+  margin-left: 0px;
+  color: black;
+  background-color: #fff ;
+  transition: 0.5s;
+  z-index: 999
+
+}
+.message{
+  width: 100%;
+}
+.userName{
+  color: #738fdb;
+  margin: 0px 5px;
+}
+.userMassage
+{
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 4px;
+    box-shadow: 0 2px 25px rgb(0 0 0 / 20%);
+}
+.textsend{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+}
+.uservalue{
+  font-size: 16px;
+    display: block;
+    font-family: 'Rubik', sans-serif;
+    width: 80%;
+    padding: 10px 10px;
+    border: 0;
+    border-bottom: 1px solid #747474;
+    outline: none;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+.userText{
+  margin: 5px;
+}

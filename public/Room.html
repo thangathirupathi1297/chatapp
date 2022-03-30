@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Room</title>
+
+
+</head>
+
+<link rel="stylesheet" href="./css/index.css">
+<body onload="onloaddata()">
+
+<div id="homeID" class="home-page">
+    <div class="mainRoom">
+        <div class="header">
+            <h1>Chat App</h1>
+        </div>
+        <div class="content-container"> 
+        <div class="usersContent">
+          <h1>Users</h1>
+          <ul id="userlists">
+              
+          </ul>
+        </div>
+
+        <div class="messagebox">
+            <div id="singleMessage" class="message">
+             
+               <div class="userMassage">
+                   <!-- <h5 class="userName">
+                       thiru
+                   </h5>
+                   <p class="userText">hey hi</p> -->
+               </div>
+
+            </div>
+        </div>
+
+        </div>
+        <form class="textsend">
+                <input type="text" required placeholder="Enter Text" class="uservalue" id="messagevalue">
+                <button onclick="postMsg()" class="home-create">Send</button>
+        </form>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="./js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Room</title>
+</head>
+
+<link rel="stylesheet" href="./css/index.css">
+<body>
+
+<div class="home-page">
+    <div class="login-form">
+        <h1>Chat App</h1>
+        <div id="errordiv"></div>
+        <div class="content">
+          <div class="input-field">
+            <input id="Name" type="text" placeholder="Email" autocomplete="nope">
+          </div>
+        <div class="action">
+          <button  onclick="AddUser()"  class="home-create">Add User</button>
+        </div>
+    </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="./Js/main.js"></script>
+</body>
+</html>
