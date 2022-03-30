@@ -140,6 +140,7 @@ socket.emit('joined', {name});
 
 
 
+
   const getuserlist=()=>{
     window.scrollBy(0,1000)
     var objDiv = document.getElementById("homeID");
@@ -198,36 +199,52 @@ socket.emit('joined', {name});
           })
       })
     .catch(err=>{console.log(err)})
+    var scrollDiv = document.getElementById("msgbox");
+    window.scrollTo(0, scrollDiv.scrollHeight)
 
 }
+const singleUser=(data)=>{
 
-const addMsg=(data)=>{
+ 
+  
+
+}
+const addMsg= (data)=>{
   var objDiv = document.getElementById("homeID");
   objDiv.scrollTop = objDiv.scrollHeight;
-  fetch('/singleMessage/?id='+data.postby,{
+
+  fetch('/singleMessage/',{
     method: "get",
     headers: {
       "Content-Type": "application/json",
+      'x-auth-token':data.postby
     },
-  }).then(( response)=>{
+  }).then((response)=>{
 
     response.json().then(async(datas) => {
-       var  name=await datas[0].postby.Name
-         const singleMessage=document.getElementById('singleMessage')
-                  const userMassage=document.createElement("div")
-                    userMassage.className="userMassage"
-                      userMassage.innerHTML=`<h5 class="userName">${name}</h5>
-                             
-                            <p class="userText">${data.Message}</p>`
-                        singleMessage.appendChild(userMassage) 
-                        document.getElementById('messagevalue').value=""
+      console.log(datas.postby.Name)
+       var  name=datas.postby.Name
+       const singleMessage=document.getElementById('singleMessage')
+       const userMassage=document.createElement("div")
+         userMassage.className="userMassage"
+           userMassage.innerHTML=`<h5 class="userName">${name}</h5>
+                  
+                 <p class="userText">${data.Message}</p>`
+             singleMessage.appendChild(userMassage) 
+             document.getElementById('messagevalue').value=""
+      return true;
+       
         })
   }).catch(err=>{console.log(err)})
-  
     
+  
 
 }
+socket.on('message',addMsg)
   const postMsg=()=>{
+    
+    var scrollDiv = document.getElementById("content-message");
+    scrollDiv.scrollTop = scrollDiv.scrollHeight;
     const token=localStorage.getItem('jwt')
     const  message=document.getElementById('messagevalue').value
     const userid=localStorage.getItem('user')
@@ -251,15 +268,18 @@ const addMsg=(data)=>{
             response.json().then((data) => {
                 if(statuscode===200)
                 {
-                  socket.on('message',addMsg)
+                  return
                 }
             })
         
         
         })
       .catch(err=>{console.log(err)})
+     
   }
   const pre=(e)=>{
+    const form=document.getElementById('textLoad')
+    form.addEventListener("submit", postMsg, true);
     e.preventDefault()
     postMsg()
   }
@@ -269,6 +289,8 @@ const addMsg=(data)=>{
   const onloaddata=()=>{
     getMessage();
     getuserlist()
+    
+    setInterval(function(){ window.scrollBy(0,1000); }, 2000)
 }
 
 
