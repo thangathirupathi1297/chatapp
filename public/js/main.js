@@ -13,12 +13,12 @@ function pageRedirect(key) {
     {
         window.location.href='Room.html'
     }
-   
+    else if(key=5){
+      window.location.href='/'
+    }
   }
-  name="hey you"
 
 const socket = io();
-socket.emit('joined', {name});
   
   function createroom(){
       const name=document.getElementById('Name').value
@@ -142,9 +142,6 @@ socket.emit('joined', {name});
 
 
   const getuserlist=()=>{
-    window.scrollBy(0,1000)
-    var objDiv = document.getElementById("homeID");
-    objDiv.scrollTop = objDiv.scrollHeight;
     const userList=document.getElementById('userlists')
     const token=localStorage.getItem('jwt')
     fetch('/userlist',{
@@ -171,8 +168,7 @@ socket.emit('joined', {name});
     .catch(err=>{console.log(err)})
   }
   const getMessage=()=>{
-    var objDiv = document.getElementById("homeID");
-    objDiv.scrollTop = objDiv.scrollHeight;
+    
     const singleMessage=document.getElementById('singleMessage')
     const token=localStorage.getItem('jwt')
     fetch('/msglist',{
@@ -186,7 +182,6 @@ socket.emit('joined', {name});
           response.json().then((data) => {
               if(statuscode===200)
               {
-                  socket.emit('joined', {name});
                data.map(i=>{
                 const userMassage=document.createElement("div")
                 userMassage.className="userMassage"
@@ -199,20 +194,9 @@ socket.emit('joined', {name});
           })
       })
     .catch(err=>{console.log(err)})
-    var scrollDiv = document.getElementById("msgbox");
-    window.scrollTo(0, scrollDiv.scrollHeight)
-
-}
-const singleUser=(data)=>{
-
- 
-  
-
 }
 const addMsg= (data)=>{
-  var objDiv = document.getElementById("homeID");
-  objDiv.scrollTop = objDiv.scrollHeight;
-
+  var objDiv = document.getElementById("singleMessage");
   fetch('/singleMessage/',{
     method: "get",
     headers: {
@@ -222,7 +206,6 @@ const addMsg= (data)=>{
   }).then((response)=>{
 
     response.json().then(async(datas) => {
-      console.log(datas.postby.Name)
        var  name=datas.postby.Name
        const singleMessage=document.getElementById('singleMessage')
        const userMassage=document.createElement("div")
@@ -232,15 +215,24 @@ const addMsg= (data)=>{
                  <p class="userText">${data.Message}</p>`
              singleMessage.appendChild(userMassage) 
              document.getElementById('messagevalue').value=""
+
+             objDiv.scrollTop = objDiv.scrollHeight;
       return true;
        
         })
   }).catch(err=>{console.log(err)})
-    
-  
+}
+const newUser=(i)=>{
+  console.log(i)
+  const userList=document.getElementById('userlists')
+  const node = document.createElement("li");
+                const textnode = document.createTextNode(i.user.Name);
+                node.appendChild(textnode);
+                  userList.appendChild(node) 
 
 }
 socket.on('message',addMsg)
+socket.on('user',newUser)
   const postMsg=()=>{
     
     var scrollDiv = document.getElementById("content-message");
@@ -287,10 +279,21 @@ socket.on('message',addMsg)
   
 
   const onloaddata=()=>{
-    getMessage();
-    getuserlist()
-    
-    setInterval(function(){ window.scrollBy(0,1000); }, 2000)
+    const token=localStorage.getItem('jwt')
+    console.log(token)
+
+    if(token!=null)
+    {
+      var objDiv = document.getElementById("singleMessage");
+      getMessage();
+      getuserlist()
+      
+      setInterval(function(){  objDiv.scrollTop = objDiv.scrollHeight;}, 2000)
+    }else{
+  pageRedirect(5)
+    }
+
+   
 }
 
 

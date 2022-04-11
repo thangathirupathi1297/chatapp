@@ -15,10 +15,7 @@ Router.get('/singleMessage',(req,res)=>{
 })
 
 Router.post('/message',auth,(req,res)=>{
-  
     const {message,userid}=req.body
-   
-  
     const NewMessage=MessageModel({
       Message:message,
       postby:userid,
@@ -31,13 +28,7 @@ Router.post('/message',auth,(req,res)=>{
     .catch(err=>console.log(err,'er'))
   })
   Router.get('/msglist',auth,(req,res)=>{
-    req.io.on('connection', socket =>{
-      socket.on('joined',(text)=>{
-        console.log("user joined" ,text)
-      })
-    })
-    console.log(req.io.on)
-   
+  
    MessageModel.find({Groupby:req.Group._id}).populate({
      path: "postby",
      select: "Name",

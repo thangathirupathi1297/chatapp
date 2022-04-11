@@ -9,19 +9,20 @@
 
 <div class="home-page">
     <div class="login-form">
-        <h1>Chat App</h1>
+        <a href="/" rel="noopener noreferrer"><h1>Chat App</h1></a>
         <div id="errordiv"></div>
         <div class="content">
           <div class="input-field">
-            <input id="Name" type="text" placeholder="Email" autocomplete="nope">
+            <input id="Name" type="text" placeholder="Name...." autocomplete="nope">
           </div>
         <div class="action">
-          <button  onclick="AddUser()"  class="home-create">Add User</button>
+          <button  onclick="AddUser()"  class="home-create">Enter Name</button>
         </div>
     </div>
 </div>
 
+
 <script src="/socket.io/socket.io.js"></script>
-<script src="./Js/main.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>
